@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block title %}DEMO{% endblock %}
+
+{% block content %}
+	<div class="container">
+      <div class="jumbotron">
+    		<div class="container">
+          <h1>BurstSMS</h1>
+          <p class="lead">Test</p>
+          <br><br>
+          <form action="" method="post" role="form" class="form-horizontal" enctype="multipart/form-data">
+            {% csrf_token%}
+          {{form.as_p}}
+            {% buttons %}
+              <button type="submit" class="btn btn-primary">
+                Send
+              </button>  
+          {% endbuttons %}
+          </form>
+    		</div> <!-- /.container -->
+	    </div> <!-- /.jumbotron -->
+    </div> <!-- /.container -->
+    {% if user.is_authenticated %}
+      {% include "app/includes/posts_form.html" %}
+      {% include "app/includes/posts.html" %}
+    {% endif %}
+{% endblock content %}
